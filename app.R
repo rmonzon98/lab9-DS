@@ -176,11 +176,7 @@ body1 <- dashboardBody(
                      plotOutput("txm_s", width = "auto")
                  )
         ),
-        tabPanel("prueba",
-                 sidebarPanel(
-                     selectInput("cod_mun_f", "Seleccione municipio:",
-                                 fxm[ , c("municipio")])
-                 ),
+        tabPanel("Mapa",
                  mainPanel(
                      leafletOutput("Map1", width = "100%", height = 550)
                  )
