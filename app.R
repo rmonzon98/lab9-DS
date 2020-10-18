@@ -7,7 +7,10 @@ library(DT)
 library(dplyr)
 library(ggplot2)
 library(leaflet)
+library(rjson)
 library(geojsonio)
+library(shinydashboard)
+library(leaflet.extras)
 
 #*******************************************************************************
 #Variables
@@ -176,11 +179,7 @@ body1 <- dashboardBody(
                      plotOutput("txm_s", width = "auto")
                  )
         ),
-        tabPanel("Mapa",
-                 mainPanel(
-                     leafletOutput("Map1", width = "100%", height = 550)
-                 )
-        ),
+        tabPanel("Mapa",leafletOutput("Map1", width = "100%", height = 550)),
         tabPanel("Tablas",
                  verticalLayout(
                      DT::dataTableOutput("fxmRaw"),
@@ -215,7 +214,7 @@ server <- function(input, output) {
     
     output$Map1 <- renderLeaflet({
         leaflet() %>% addGeoJSON(geojson )%>%
-        setView(-90.5626017, 14.6263757, zoom = 3)
+        setView(-90.5626017, 14.6263757, zoom = 5)
         })
     
     output$cxmRaw <- DT::renderDataTable({
