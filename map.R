@@ -1,7 +1,7 @@
-library(geojsonio)
 library(leaflet)
 library(reshape)
 library(dplyr)
+library(geojsonio)
 
 covid <- read.csv("fxm.csv")
 
