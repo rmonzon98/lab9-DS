@@ -144,7 +144,7 @@ geojson$features <- lapply(geojson$features, function(feat) {
 #*******************************************************************************
 
 header1 <- dashboardHeader(
-    title = "DASHBOARD DESDE EL PRINCIPIO"
+    title = "DASHBOARD DESDE 0"
 )
 
 sidebar1 <- dashboardSidebar(
@@ -153,16 +153,6 @@ sidebar1 <- dashboardSidebar(
 
 body1 <- dashboardBody(
     tabsetPanel(
-        tabPanel("Fallecidos por municipio",
-                 sidebarPanel(
-                     selectInput("municipio", "Seleccione municipio:",
-                                 fxm[ , c("municipio")])
-                 ),
-                 mainPanel(
-                     plotOutput("fxm_s", width = "auto")
-                 )
-        ),
-        
         tabPanel("Confirmados por municipio",
                  sidebarPanel(
                      selectInput("municipio_c", "Seleccione municipio:",
@@ -171,8 +161,16 @@ body1 <- dashboardBody(
                  mainPanel(
                      plotOutput("cxm_s", width = "auto")
                  )
-        ),
-        
+                 ),
+        tabPanel("Fallecidos por municipio",
+                 sidebarPanel(
+                     selectInput("municipio", "Seleccione municipio:",
+                                 fxm[ , c("municipio")])
+                 ),
+                 mainPanel(
+                     plotOutput("fxm_s", width = "auto")
+                 )
+                 ),
         tabPanel("Tamizados por municipio",
                  sidebarPanel(
                      selectInput("municipio_t", "Seleccione municipio:",
@@ -181,15 +179,17 @@ body1 <- dashboardBody(
                  mainPanel(
                      plotOutput("txm_s", width = "auto")
                  )
-        ),
-        tabPanel("Mapa",leafletOutput("Map1", width = "100%", height = 550)),
-        tabPanel("Tablas",
-                 verticalLayout(
-                     DT::dataTableOutput("fxmRaw"),
-                     DT::dataTableOutput("txmRaw"),
-                     DT::dataTableOutput("cxmRaw")
-                 )
-        )
+                 ),
+        tabPanel("Mapa de muertes por departamento",
+                 leafletOutput("Map1", width = "100%", height = 550)
+                 )#,
+        #tabPanel("Tablas",
+                 #verticalLayout(
+                     #DT::dataTableOutput("fxmRaw"),
+                     #DT::dataTableOutput("txmRaw"),
+                     #DT::dataTableOutput("cxmRaw")
+                 #)
+                 #)
     )
 )
 
@@ -220,7 +220,7 @@ server <- function(input, output) {
     
     output$Map1 <- renderLeaflet({
         leaflet() %>% addGeoJSON(geojson )%>%
-        setView(-90.5626017, 14.6263757, zoom = 5)
+        setView(-90.5626017, 14.6263757, zoom = 8)
         })
     
     output$cxmRaw <- DT::renderDataTable({
