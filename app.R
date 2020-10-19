@@ -2,6 +2,7 @@
 #install.packages("reshape")
 #install.packages("DT")
 library(shiny)
+library(shinythemes)
 library(reshape)
 library(DT)
 library(dplyr)
@@ -19,6 +20,8 @@ fxm <- read.csv('fxm.csv')
 txm <- read.csv('txm.csv')
 cxm <- read.csv('cxm.csv')
 covid <- read.csv("fxm.csv")
+
+
 
 #*******************************************************************************
 #Functions
@@ -141,7 +144,7 @@ geojson$features <- lapply(geojson$features, function(feat) {
 #*******************************************************************************
 
 header1 <- dashboardHeader(
-    title = "Dashboard desde 0"
+    title = "DASHBOARD DESDE EL PRINCIPIO"
 )
 
 sidebar1 <- dashboardSidebar(
@@ -160,7 +163,7 @@ body1 <- dashboardBody(
                  )
         ),
         
-        tabPanel("confirmados por municipio",
+        tabPanel("Confirmados por municipio",
                  sidebarPanel(
                      selectInput("municipio_c", "Seleccione municipio:",
                                  cxm[ , c("municipio")])
@@ -191,7 +194,10 @@ body1 <- dashboardBody(
 )
 
 # Define UI for application that draws a histogram
-ui <- fluidPage(header1, body1)
+ui <- fluidPage(
+    tags$style(type='text/css', ".selectize-input { font-family: Century Gothic, monospace; } .selectize-dropdown { font-family: Century Gothic, monospace; }"),
+    tags$style(HTML("body { font-family: Century Gothic, monospace; line-height: 1.1; }"))
+    , theme = shinytheme("slate"), titlePanel("DASHBOARD COVID-19!"),  header1, body1)
 
 
 #*******************************************************************************
@@ -224,7 +230,7 @@ server <- function(input, output) {
     })
     
     output$fxm_s <- renderPlot({
-       plot(melted_by_mun(input$municipio)$variable, melted_by_mun(input$municipio)$value)
+        plot(melted_by_mun(input$municipio)$variable, melted_by_mun(input$municipio)$value)
     })
     
     output$cxm_s <- renderPlot({

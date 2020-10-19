@@ -1,0 +1,9 @@
+@font-face {  
+  src: url(Kirnberg.ttf);
+  font-family: "Kirnberg";
+}
+
+.p_Style {
+	font-family: 'Kirnberg';
+	color: red;
+}
