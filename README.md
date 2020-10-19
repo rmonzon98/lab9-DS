@@ -8,4 +8,4 @@
 See the code of project [Shiny Code](https://github.com/rmonzon98/lab9-DS.git)
 
 # Shinyapps.io
-To see the shiny click hear [Shiny Apps](link)
+To see the shiny click hear [Shiny Apps](https://rmonzon98.shinyapps.io/lab9-DS/)
