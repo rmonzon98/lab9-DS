@@ -4,8 +4,12 @@
 - David Valenzuela        171001
 - Fernando Hengstenberg   17699
 
-# Code
-See the code of project [Shiny Code](https://github.com/rmonzon98/lab9-DS.git)
+# Preguntas respondidas
+
+- Primera tab: ¿cuántos confirmados han habido por departamento desde que inicio la pandemia?
+- Segubda tab: ¿cuántos fallecidos han habido por departamento desde que inicio la pandemia?
+- Tercera tab: ¿cuántos tamizados han habido por departamento desde que inicio la pandemia?
+
 
 # Shinyapps.io
-To see the shiny click hear [Shiny Apps](https://rmonzon98.shinyapps.io/lab9-DS/)
+Para ver el shiny puede ingresar a este link [Shiny Apps](https://rmonzon98.shinyapps.io/lab9-DS/) .Este DashBoard no fue basado en otro existente
